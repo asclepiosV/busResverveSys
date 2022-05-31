@@ -18,6 +18,7 @@ int choice;
 char ok[1];
 
 bool login();
+double priceCalculator();
 
 int main() {
     bool log = false;
@@ -39,14 +40,17 @@ int main() {
 
             switch (choice) {
                 case 1:
+                    bus1.price = priceCalculator(bus1.line, bus1.place, bus1.price);
                     printf("%d chosen\nIt will cost you %f €\n", choice, bus1.price);
                     bus1.place -= 1;
                     break;
                 case 2:
+                    bus2.price = priceCalculator(bus2.line, bus2.price, bus2.place);
                     printf("%d chosen\nIt will cost you %f €\n", choice, bus2.price);
                     bus2.place -= 1;
                     break;
                 case 3:
+                    bus3.price = priceCalculator(bus3.line, bus3.price, bus3.place);
                     printf("%d chosen\nIt will cost you %f €\n", choice, bus3.price);
                     bus3.place -= 1;
                     break;
@@ -101,4 +105,20 @@ bool login(log){
 
     }while (log != true && n<=5);
     return log;
+}
+
+double priceCalculator(int bus, double price, int place){
+    switch (bus) {
+        case 1:
+            price = 100/place;
+            break;
+        case 2:
+            price = 60/place ;
+            break;
+        case 3:
+            price = 50/place;
+            break;
+        default: price = price;
+    }
+    return price;
 }
