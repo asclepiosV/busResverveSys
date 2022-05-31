@@ -17,6 +17,7 @@ int a = 1;
 int choice;
 char ok[1];
 char agree[1];
+int wallet;
 
 bool login();
 double priceCalculator();
@@ -47,6 +48,7 @@ int main() {
                     scanf("%s", agree);
                     if (strcmp(agree, "y") == 0) {
                         bus1.place -= 1;
+                        wallet += 1;
                     } else {
                         printf("Ok, you can choose another bus\n");
                     }
@@ -59,6 +61,7 @@ int main() {
                     scanf("%s", agree);
                     if (strcmp(agree, "y") == 0) {
                         bus2.place -= 1;
+                        wallet += 1;
                     } else {
                         printf("Ok, you can choose another bus\n");
                     }
@@ -70,6 +73,7 @@ int main() {
                     scanf("%s", agree);
                     if (strcmp(agree, "y") == 0) {
                         bus3.place -= 1;
+                        wallet += 1;
                     } else {
                         printf("Ok, you can choose another bus\n");
                     }
@@ -92,6 +96,7 @@ int main() {
         } while (a == 1);
     }
     else printf("Please log in\n");
+    printf("You have %d tickets\n", wallet);
     printf("Thank you bye\n");
     return 0;
 }
