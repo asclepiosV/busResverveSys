@@ -16,6 +16,7 @@ struct User {
 int a = 1;
 int choice;
 char ok[1];
+char agree[1];
 
 bool login();
 double priceCalculator();
@@ -42,25 +43,44 @@ int main() {
                 case 1:
                     bus1.price = priceCalculator(bus1.line, bus1.place, bus1.price);
                     printf("%d chosen\nIt will cost you %f €\n", choice, bus1.price);
-                    bus1.place -= 1;
+                    printf("Do you want to buy it? y/n\n");
+                    scanf("%s", agree);
+                    if (strcmp(agree, "y") == 0) {
+                        bus1.place -= 1;
+                    } else {
+                        printf("Ok, you can choose another bus\n");
+                    }
                     break;
                 case 2:
                     bus2.price = priceCalculator(bus2.line, bus2.price, bus2.place);
                     printf("%d chosen\nIt will cost you %f €\n", choice, bus2.price);
                     bus2.place -= 1;
+                    printf("Do you want to buy it? y/n\n");
+                    scanf("%s", agree);
+                    if (strcmp(agree, "y") == 0) {
+                        bus2.place -= 1;
+                    } else {
+                        printf("Ok, you can choose another bus\n");
+                    }
                     break;
                 case 3:
                     bus3.price = priceCalculator(bus3.line, bus3.price, bus3.place);
                     printf("%d chosen\nIt will cost you %f €\n", choice, bus3.price);
-                    bus3.place -= 1;
+                    printf("Do you want to buy it? y/n\n");
+                    scanf("%s", agree);
+                    if (strcmp(agree, "y") == 0) {
+                        bus3.place -= 1;
+                    } else {
+                        printf("Ok, you can choose another bus\n");
+                    }
                     break;
                 default:
                     printf("Next time choose the right bus pls\n");
                     break;
             }
-            printf("Bus line: %d, Price: %f, Number of tickets: %d\n", bus1.line, bus1.price, bus1.place);
-            printf("Bus line: %d, Price: %f, Number of tickets: %d\n", bus2.line, bus2.price, bus2.place);
-            printf("Bus line: %d, Price: %f, Number of tickets: %d\n", bus3.line, bus3.price, bus3.place);
+            printf("Bus line: %d, Number of tickets: %d\n", bus1.line, bus1.place);
+            printf("Bus line: %d, Number of tickets: %d\n", bus2.line, bus2.place);
+            printf("Bus line: %d, Number of tickets: %d\n", bus3.line, bus3.place);
 
             printf("Do you and an other one? y/n\n");
             scanf("%s", ok);
@@ -110,13 +130,13 @@ bool login(log){
 double priceCalculator(int bus, double price, int place){
     switch (bus) {
         case 1:
-            price = 100/place;
+            price = 100.00/place;
             break;
         case 2:
-            price = 60/place ;
+            price = 60.00/place ;
             break;
         case 3:
-            price = 50/place;
+            price = 50.00/place;
             break;
         default: price = price;
     }
